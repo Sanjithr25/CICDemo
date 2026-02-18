@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -29,36 +29,3 @@ jobs:
       - name: Verify build
         run: |
           echo "✓ Application verified successfully"
-  
-  # Continuous Deployment on self-hosted runner
-  cd:
-    needs: ci
-    runs-on: self-hosted
-    name: Deploy to Self-Hosted Server
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Install dependencies
-        run: npm install --production
-      
-      - name: Stop previous instance
-        run: |
-          pkill -f "node server.js" || true
-          sleep 2
-      
-      - name: Start application
-        run: |
-          nohup npm start > server.log 2>&1 &
-          sleep 2
-          echo "✓ Application deployed and running"
-      
-      - name: Verify deployment
-        run: |
-          if pgrep -f "node server.js" > /dev/null; then
-            echo "✓ Server is running successfully"
-          else
-            echo "✗ Server failed to start"
-            exit 1
-          fi

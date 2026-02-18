@@ -4,10 +4,34 @@ npm-debug.log
 package-lock.json
 yarn.lock
 
-# Environment variables
+# Environment variables & Secrets
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
+.secrets
+secrets/
+
+# SSH Keys & Certificates
+*.pem
+*.key
+*.crt
+*.cert
+*.p8
+.ssh/
+
+# API Keys & Credentials
+.apikey
+.token
+credentials.json
+credentials/
+
+# Logs
+*.log
+logs/
+server.log
+npm-debug.log*
 
 # IDE
 .vscode/
@@ -15,11 +39,43 @@ yarn.lock
 *.swp
 *.swo
 *~
+.DS_Store
+.project
+.settings/
 
 # OS
 .DS_Store
 Thumbs.db
+.env.local.php
+.htaccess
 
 # Build/dist
 dist/
 build/
+*.tgz
+
+# Testing & Coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Runtime
+pid/
+*.pid
+
+# GitHub Actions Runner
+actions-runner/
+_work/
+.runner
+.credentials
+.credentials_rsaparams
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
